@@ -5,6 +5,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-11-22
+### Fixed
+- PDF export no longer leaves a heading alone at the bottom of a page, and no longer splits code blocks, tables, quotes or images that fit on one page. Long code lines now wrap in the PDF.
+
+
 ### Added
 - App icon (`build/icon.svg`, `.png`, `.ico`, `.icns`), also used as the window icon.
 - Demo GIF (split view with Mermaid and math), "Why this one?" comparison and download button in the README.
@@ -30,5 +35,6 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Live reload on file change, drag and drop, export to HTML and PDF.
 - Windows, macOS and Linux builds with electron-builder.
 
-[Unreleased]: https://github.com/vladano/md-file-editor/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/vladano/md-file-editor/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/vladano/md-file-editor/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/vladano/md-file-editor/releases/tag/v1.0.0

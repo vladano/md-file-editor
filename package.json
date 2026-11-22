@@ -1,7 +1,7 @@
 {
   "name": "md-file-editor",
   "productName": "MD File Editor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Free cross-platform Markdown editor and reader built with Electron",
   "main": "main.js",
   "author": {
