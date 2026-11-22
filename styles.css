@@ -75,5 +75,7 @@ mark.find.current { background: var(--mark-cur); }
   pre, blockquote, table, img, figure, tr { break-inside: avoid; page-break-inside: avoid; }
   /* Very long code blocks can't fit on one page, so let them split */
   pre { white-space: pre-wrap; }
+  /* Marked by renderer.js on export: blocks too tall for one page start right after their heading and split */
+  pre.long-code { break-inside: auto; page-break-inside: auto; }
   p { orphans: 3; widows: 3; }
 }

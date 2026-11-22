@@ -4,6 +4,10 @@ All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- PDF export no longer leaves a mostly empty page before a code block that is taller than one page. Such blocks now start right after their heading and split across pages.
+### Added
+- The PDF export example now includes a listing taller than a page.
 
 ## [1.0.1] - 2026-11-22
 ### Fixed
