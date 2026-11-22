@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="https://github.com/vladano/md-file-editor/releases/latest">
-    <img src="https://img.shields.io/badge/%E2%AC%87%20Download%20for%20Windows%20%7C%20Linux-2563eb?style=for-the-badge" alt="Download the latest release">
+    <img src="https://img.shields.io/badge/%E2%AC%87%20Download%20for%20Windows%20%7C%20macOS%20%7C%20Linux-2563eb?style=for-the-badge" alt="Download the latest release">
   </a>
 </p>
 
@@ -66,15 +66,17 @@ Download the latest version for your OS from the [Releases page](https://github.
 | OS | Download |
 |---|---|
 | Windows | Installer (`Setup ... .exe`) or portable `.exe` |
+| macOS | `.dmg` or `.zip` (Intel and Apple Silicon) |
 | Linux | `.AppImage`, `.deb` or `.tar.gz` |
 
-macOS binaries are not published. You can [build them yourself](docs/BUILDING.md) on a Mac.
+You can also [build the binaries yourself](docs/BUILDING.md).
 
 Each release includes a `SHA256SUMS.txt` file so you can verify your download.
 
 The builds are not code signed yet, so your OS may show a warning on first launch:
 
 - Windows: SmartScreen shows "Windows protected your PC". Click "More info" > "Run anyway".
+- macOS: Gatekeeper blocks the first launch. Right-click the app and choose Open, or run `xattr -cr "/Applications/MD File Editor.app"` after copying it to Applications.
 - Linux: `chmod +x` the AppImage, or install the `.deb` with `sudo apt install ./file.deb`.
 
 ## Quick start (from source)
