@@ -1,7 +1,7 @@
-# Builds Windows and Linux binaries on native runners.
+# Builds Windows, Linux and macOS binaries on native runners.
 # Trigger manually (Actions > Build > Run workflow) or by pushing a tag like v1.0.0.
 # Pushing a v* tag also creates a GitHub Release with all binaries and a SHA256SUMS.txt.
-# macOS is not part of the release build. Add it back to the matrix when it is needed.
+# macOS builds are unsigned unless signing secrets (CSC_LINK etc.) are configured.
 name: Build
 
 on:
@@ -22,6 +22,8 @@ jobs:
             target: --win
           - os: ubuntu-latest
             target: --linux
+          - os: macos-latest
+            target: --mac
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
