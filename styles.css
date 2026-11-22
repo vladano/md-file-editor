@@ -69,4 +69,11 @@ mark.find.current { background: var(--mark-cur); }
 @media print {
   #toolbar, #findbar, #outline, #editor { display: none !important; }
   #preview { overflow: visible; padding: 0; }
+  /* Keep headings with the content that follows them */
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; page-break-after: avoid; break-inside: avoid; }
+  /* Avoid splitting small blocks across pages */
+  pre, blockquote, table, img, figure, tr { break-inside: avoid; page-break-inside: avoid; }
+  /* Very long code blocks can't fit on one page, so let them split */
+  pre { white-space: pre-wrap; }
+  p { orphans: 3; widows: 3; }
 }
