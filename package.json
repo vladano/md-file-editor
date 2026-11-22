@@ -1,0 +1,93 @@
+{
+  "name": "md-file-editor",
+  "productName": "MD File Editor",
+  "version": "1.0.0",
+  "description": "Markdown file reader and editor",
+  "main": "main.js",
+  "author": {
+    "name": "vladano",
+    "email": "noreply@example.com",
+    "url": "https://github.com/vladano"
+  },
+  "homepage": "https://github.com/vladano",
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test \"test/**/*.test.js\"",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win",
+    "dist:mac": "electron-builder --mac",
+    "dist:linux": "electron-builder --linux",
+    "dist:all": "electron-builder --win --mac --linux"
+  },
+  "build": {
+    "appId": "com.mdfileeditor.app",
+    "productName": "MD File Editor",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "index.html",
+      "styles.css",
+      "src/**/*",
+      "package.json",
+      "node_modules/**/*"
+    ],
+    "fileAssociations": [
+      {
+        "ext": ["md", "markdown", "mdown", "mkd"],
+        "name": "Markdown",
+        "description": "Markdown document",
+        "role": "Editor"
+      }
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64", "arm64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}-portable.${ext}"
+    },
+    "mac": {
+      "target": [
+        { "target": "dmg", "arch": ["x64", "arm64"] },
+        { "target": "zip", "arch": ["x64", "arm64"] }
+      ],
+      "category": "public.app-category.productivity"
+    },
+    "linux": {
+      "target": ["AppImage", "deb", "tar.gz"],
+      "executableName": "md-file-editor",
+      "category": "Office",
+      "maintainer": "MD File Editor <noreply@example.com>"
+    }
+  },
+  "dependencies": {
+    "@iktakahiro/markdown-it-katex": "4.0.1",
+    "dompurify": "3.4.18",
+    "highlight.js": "11.12.0",
+    "katex": "0.19.1",
+    "markdown-it": "15.0.3",
+    "markdown-it-anchor": "10.1.0",
+    "markdown-it-emoji": "3.1.0",
+    "markdown-it-footnote": "4.0.0",
+    "markdown-it-task-lists": "2.1.1",
+    "mermaid": "12.3.0"
+  },
+  "devDependencies": {
+    "electron": "45.4.1",
+    "electron-builder": "26.18.0"
+  }
+}

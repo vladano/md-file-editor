@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' file: data: https: http:; font-src 'self' data:;" />
+  <title>MD File Editor</title>
+  <link rel="stylesheet" href="node_modules/katex/dist/katex.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="theme-light mode-preview">
+  <header id="toolbar">
+    <button id="btn-open" data-cmd="open" title="Open (Ctrl+O)">Open</button>
+    <button id="btn-save" data-cmd="save" title="Save (Ctrl+S)">Save</button>
+    <span class="sep"></span>
+    <button id="btn-outline" data-cmd="toggle-outline" title="Toggle outline (Ctrl+B)" aria-pressed="true">Outline</button>
+    <div class="group" role="group" aria-label="View mode">
+      <button data-mode="preview" title="Preview (Ctrl+1)">Preview</button>
+      <button data-mode="edit" title="Editor (Ctrl+2)">Editor</button>
+      <button data-mode="split" title="Split (Ctrl+3)">Split</button>
+    </div>
+    <div class="group" role="group" aria-label="Zoom">
+      <button id="zoom-out" data-cmd="zoom-out" title="Zoom out (Ctrl+-)" aria-label="Zoom out">&minus;</button>
+      <button id="zoom-reset" data-cmd="zoom-reset" title="Reset zoom (Ctrl+0)" aria-label="Reset zoom">100%</button>
+      <button id="zoom-in" data-cmd="zoom-in" title="Zoom in (Ctrl+=)" aria-label="Zoom in">+</button>
+    </div>
+    <button id="btn-theme" data-cmd="toggle-theme" title="Toggle theme (Ctrl+T)">Theme</button>
+    <span id="status"></span>
+  </header>
+
+  <div id="findbar" hidden>
+    <input id="find-input" type="text" placeholder="Find in document" aria-label="Find" />
+    <span id="find-count"></span>
+    <button id="find-prev" title="Previous (Shift+Enter)">&#8593;</button>
+    <button id="find-next" title="Next (Enter)">&#8595;</button>
+    <button id="find-close" title="Close (Esc)">&#10005;</button>
+  </div>
+
+  <main id="layout">
+    <nav id="outline" aria-label="Outline"></nav>
+    <textarea id="editor" spellcheck="false" aria-label="Markdown editor"></textarea>
+    <article id="preview" class="markdown-body" tabindex="0">
+      <div id="empty">Open a Markdown file (Ctrl+O) or drop one here.</div>
+    </article>
+  </main>
+
+  <script src="node_modules/dompurify/dist/purify.min.js"></script>
+  <script src="node_modules/mermaid/dist/mermaid.min.js"></script>
+  <script src="src/text-utils.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>
