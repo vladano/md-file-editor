@@ -22,7 +22,11 @@ Requires Node.js 20 or newer.
 
 ## Reporting bugs and ideas
 
-Use the issue templates. For a bug, include your OS, the app version and steps to reproduce. For security problems, see [SECURITY.md](SECURITY.md).
+Use the [issue templates](https://github.com/vladano/md-file-editor/issues/new/choose). For a bug, include your OS, the app version and steps to reproduce. Check for an existing issue first.
+
+For questions and open-ended ideas, use [Discussions](https://github.com/vladano/md-file-editor/discussions). See also [How to report bugs](https://github.com/vladano/md-file-editor/discussions/8).
+
+For security problems, do not open a public issue. See [SECURITY.md](SECURITY.md).
 
 ## License
 

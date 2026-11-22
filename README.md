@@ -110,6 +110,12 @@ On macOS use Cmd instead of Ctrl.
 - [Testing](docs/TESTING.md): unit tests and the manual test checklist.
 - [Contributing](CONTRIBUTING.md), [Changelog](CHANGELOG.md), [Security policy](SECURITY.md).
 
+## Report a bug or request a feature
+
+- Found a bug or want a feature? [Open an issue](https://github.com/vladano/md-file-editor/issues/new/choose) and pick the bug report or feature request template.
+- Have a question or an open-ended idea? Start a thread in [Discussions](https://github.com/vladano/md-file-editor/discussions). See [how to report bugs](https://github.com/vladano/md-file-editor/discussions/8).
+- Security problem? Do not post it publicly. Use the [private vulnerability report](SECURITY.md).
+
 ## License
 
 MIT License. Free to use, copy, modify and distribute for personal and commercial purposes. Copyright (c) 2026 [vladano](https://github.com/vladano).
