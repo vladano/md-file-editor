@@ -162,3 +162,21 @@ describe('cycleIndex', () => {
     assert.equal(T.cycleIndex(0, 1, 0), -1);
   });
 });
+
+describe('isTallCode', () => {
+  test('short blocks are kept together on one page', () => {
+    assert.equal(T.isTallCode(10, 1), false);
+    assert.equal(T.isTallCode(30, 1), false);
+  });
+  test('blocks of about 80% of a page or more may split', () => {
+    assert.equal(T.isTallCode(38, 1), true);
+    assert.equal(T.isTallCode(70, 1), true);
+  });
+  test('depends on the zoom level', () => {
+    assert.equal(T.isTallCode(30, 1.5), true);
+    assert.equal(T.isTallCode(38, 0.5), false);
+  });
+  test('treats a missing zoom as 1', () => {
+    assert.equal(T.isTallCode(70), true);
+  });
+});

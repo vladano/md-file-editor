@@ -6,6 +6,8 @@
 })(typeof self !== 'undefined' ? self : this, function () {
   const ZOOM_MIN = 0.5;
   const ZOOM_MAX = 3;
+  const CODE_LINE_PX = 20.8; // code line height in the preview (13px font x 1.6 line height)
+  const TALL_CODE_PX = 780;  // about 80% of a printed Letter page
 
   function countWords(text) {
     return (String(text).match(/\S+/g) || []).length;
@@ -89,8 +91,15 @@
     return (((current + dir) % n) + n) % n;
   }
 
+  /**
+   * True when a code block is too tall to be kept on one printed page (about 80% of a page or more).
+   * Such blocks must be allowed to split, otherwise they get pushed to a new page and leave a gap.
+   */
+  function isTallCode(lineCount, zoom) {
+    return lineCount * CODE_LINE_PX * (zoom || 1) >= TALL_CODE_PX;
+  }
   return {
     ZOOM_MIN, ZOOM_MAX, countWords, normalizeEol, clampZoom, isRelativeSrc, isExternalHref,
-    baseName, stripExtension, windowTitle, lineToOffset, findInText, findAll, cycleIndex
+    baseName, stripExtension, windowTitle, lineToOffset, findInText, findAll, cycleIndex, isTallCode
   };
 });

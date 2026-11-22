@@ -186,8 +186,16 @@ async function exportHtml() {
 async function exportPdf() {
   const prev = state.mode;
   setMode('preview');
-  await api.exportPdf(T.stripExtension(baseName()));
-  setMode(prev);
+  // Code blocks too tall for one page must be allowed to split (see .long-code in styles.css)
+  const tall = [...preview.querySelectorAll('pre:not(.mermaid)')]
+    .filter((pre) => T.isTallCode(pre.textContent.replace(/\n$/, '').split('\n').length, state.zoom));
+  tall.forEach((pre) => pre.classList.add('long-code'));
+  try {
+    await api.exportPdf(T.stripExtension(baseName()));
+  } finally {
+    tall.forEach((pre) => pre.classList.remove('long-code'));
+    setMode(prev);
+  }
 }
 
 // ---------- view state ----------
