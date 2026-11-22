@@ -38,6 +38,8 @@ Edit Markdown with an instant split-view preview, including Mermaid diagrams and
   <img src="screenshot.JPG" alt="MD File Editor screenshot" width="600">
 </p>
 
+PDF export keeps headings with their content and avoids splitting code blocks and tables. See the [example PDF](docs/examples/pdf-export-sample.pdf) and its [Markdown source](docs/examples/pdf-export-sample.md).
+
 ## Why this one?
 
 | | MD File Editor | Typora | Obsidian | MarkText |
