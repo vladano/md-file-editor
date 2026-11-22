@@ -22,7 +22,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "electron .",
-    "test": "node --test \"test/**/*.test.js\"",
+    "test": "node --test",
     "dist": "electron-builder",
     "dist:win": "electron-builder --win",
     "dist:mac": "electron-builder --mac",

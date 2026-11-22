@@ -305,7 +305,7 @@ docker run --rm -v "$PWD":/project -w /project electronuserland/builder \
 
 ## All platforms with GitHub Actions
 
-`.github/workflows/build.yml` builds Windows, macOS and Linux on native runners.
+`.github/workflows/build.yml` builds Windows and Linux on native runners. macOS is not in the workflow, so build it on a Mac.
 
 1. Push the project to a GitHub repository.
 2. Go to Actions > Build > Run workflow (or push a tag such as `v1.0.0`).

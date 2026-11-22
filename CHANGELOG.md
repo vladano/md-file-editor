@@ -9,7 +9,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - MIT license.
 - Screenshot, quick start and download sections in the README.
 - CI workflow that runs the unit tests on Windows, macOS and Linux.
-- Release workflow that publishes binaries and `SHA256SUMS.txt` when a `v*` tag is pushed.
+- Release workflow that publishes Windows and Linux binaries and `SHA256SUMS.txt` when a `v*` tag is pushed.
+
+### Fixed
+- `npm test` now works on Node.js 20 (the glob pattern in the test script needs Node 21 or newer).
 
 ### Changed
 - Renamed the app to MD File Editor (package `md-file-editor`, app ID `com.mdfileeditor.app`).

@@ -39,18 +39,19 @@ Download the latest version for your OS from the [Releases page](https://github.
 | OS | Download |
 |---|---|
 | Windows | Installer (`Setup ... .exe`) or portable `.exe` |
-| macOS | `.dmg` (Intel and Apple Silicon) or `.zip` |
 | Linux | `.AppImage`, `.deb` or `.tar.gz` |
+
+macOS binaries are not published. You can [build them yourself](docs/BUILDING.md) on a Mac.
 
 Each release includes a `SHA256SUMS.txt` file so you can verify your download.
 
 The builds are not code signed yet, so your OS may show a warning on first launch:
 
 - Windows: SmartScreen shows "Windows protected your PC". Click "More info" > "Run anyway".
-- macOS: right-click the app and choose Open, or run `xattr -cr "/Applications/MD File Editor.app"`.
 - Linux: `chmod +x` the AppImage, or install the `.deb` with `sudo apt install ./file.deb`.
 
 To build it yourself, see [docs/BUILDING.md](docs/BUILDING.md).
+
 ## Requirements
 
 - [Node.js](https://nodejs.org) 20 or newer (includes npm)
