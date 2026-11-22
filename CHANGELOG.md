@@ -6,6 +6,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 ## [Unreleased]
 
 ### Added
+- App icon (`build/icon.svg`, `.png`, `.ico`, `.icns`), also used as the window icon.
+- Demo GIF (split view with Mermaid and math), "Why this one?" comparison and download button in the README.
+- `docs/TESTING.md` with the unit test overview and the manual test checklist.
 - MIT license.
 - Screenshot, quick start and download sections in the README.
 - CI workflow that runs the unit tests on Windows, macOS and Linux.
@@ -16,7 +19,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ### Changed
 - Renamed the app to MD File Editor (package `md-file-editor`, app ID `com.mdfileeditor.app`).
-- Moved the detailed build instructions to `docs/BUILDING.md`.
+- Moved the detailed build instructions, build commands reference and app icon notes to `docs/BUILDING.md`.
+- Moved the unit test overview and test checklist from the README to `docs/TESTING.md`.
 
 ## [1.0.0]
 

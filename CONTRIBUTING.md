@@ -17,7 +17,7 @@ Requires Node.js 20 or newer.
 
 - Run `npm test`. All tests must pass.
 - Put testable logic in `src/` and add or update tests in `test/`.
-- Check UI changes by hand with the [test checklist](README.md#test-checklist).
+- Check UI changes by hand with the [test checklist](docs/TESTING.md#test-checklist).
 - Keep pull requests focused on one change, and add a line to `CHANGELOG.md` under `Unreleased`.
 
 ## Reporting bugs and ideas

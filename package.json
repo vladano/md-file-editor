@@ -2,7 +2,7 @@
   "name": "md-file-editor",
   "productName": "MD File Editor",
   "version": "1.0.0",
-  "description": "Markdown file reader and editor",
+  "description": "Free cross-platform Markdown editor and reader built with Electron",
   "main": "main.js",
   "author": {
     "name": "vladano",
@@ -43,6 +43,7 @@
       "index.html",
       "styles.css",
       "src/**/*",
+      "build/icon.png",
       "package.json",
       "node_modules/**/*"
     ],

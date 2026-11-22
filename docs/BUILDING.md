@@ -4,11 +4,34 @@ Binaries are produced by [electron-builder](https://www.electron.build) and writ
 
 Build each OS on that same OS. macOS apps can only be built on a Mac. Linux `.deb` packages need Linux tools. If you don't have all three machines, use the GitHub Actions workflow described below.
 
+## Build commands reference
+
+| Command | Result |
+|---|---|
+| `npm run dist` | Build for the current OS |
+| `npm run dist:win` | Windows installer + portable |
+| `npm run dist:mac` | macOS dmg + zip |
+| `npm run dist:linux` | AppImage, deb, tar.gz |
+| `npm run dist:all` | All three (works only where the toolchains are available) |
+
+## App icon
+
+The app icon lives in the `build/` folder and electron-builder picks it up automatically:
+
+| File | Used for |
+|---|---|
+| `build/icon.svg` | Editable source (1024x1024) |
+| `build/icon.ico` | Windows installer, exe and shortcuts (16 to 256 px) |
+| `build/icon.icns` | macOS app and dmg (16 to 1024 px) |
+| `build/icon.png` | Linux packages and the window icon (512x512) |
+
+To change the design, edit `build/icon.svg` and export new `.png`, `.ico` and `.icns` files from it. Keep the `.png` at 512x512 or larger.
+
 ## Windows
 
 Tested on Windows 10 22H2 with Node.js 24. On Windows you can build only the Windows binaries. For Linux use [WSL 2](#linux-on-windows-with-wsl-2) or [Docker](#linux-with-docker). For macOS use a Mac or [GitHub Actions](#all-platforms-with-github-actions).
 
-Run `npm test` for the unit tests. Check the Electron UI by hand with the [test checklist](../README.md#test-checklist).
+Run `npm test` for the unit tests. Check the Electron UI by hand with the [test checklist](TESTING.md#test-checklist).
 
 ### PowerShell
 
@@ -103,7 +126,7 @@ npm run dist:win
 | `pwsh` is not recognized | PowerShell 7 isn't installed. Use `powershell` (5.1) as shown above, or install PowerShell 7. |
 | SmartScreen blocks the app | Expected for unsigned builds. Click "More info" > "Run anyway", or sign the build. |
 | Warning `GpuControl.CreateCommandBuffer` in the terminal | Harmless Chromium message. Ignore it. |
-| `default Electron icon is used` during build | No custom icon yet. See [App icon](../README.md#app-icon). |
+| `default Electron icon is used` during build | `build/icon.*` is missing or misnamed. See [App icon](#app-icon). |
 
 ## macOS
 
