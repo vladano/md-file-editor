@@ -9,7 +9,15 @@
     "email": "noreply@example.com",
     "url": "https://github.com/vladano"
   },
-  "homepage": "https://github.com/vladano",
+  "homepage": "https://github.com/vladano/md-file-editor#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladano/md-file-editor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vladano/md-file-editor/issues"
+  },
+  "keywords": ["markdown", "markdown-editor", "markdown-viewer", "electron", "desktop-app", "mermaid", "katex", "cross-platform"],
   "license": "MIT",
   "type": "commonjs",
   "scripts": {

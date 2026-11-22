@@ -1,11 +1,15 @@
 # Builds Windows, macOS and Linux binaries on native runners.
 # Trigger manually (Actions > Build > Run workflow) or by pushing a tag like v1.0.0.
+# Pushing a v* tag also creates a GitHub Release with all binaries and a SHA256SUMS.txt.
 name: Build
 
 on:
   workflow_dispatch:
   push:
     tags: ['v*']
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -42,3 +46,34 @@ jobs:
             dist/*.deb
             dist/*.tar.gz
           if-no-files-found: error
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check tag matches package.json version
+        run: |
+          PKG_VERSION="v$(node -p "require('./package.json').version")"
+          if [ "$PKG_VERSION" != "${GITHUB_REF_NAME}" ]; then
+            echo "Tag ${GITHUB_REF_NAME} does not match package.json version ${PKG_VERSION}"
+            exit 1
+          fi
+      - uses: actions/download-artifact@v4
+        with:
+          path: release-files
+          pattern: md-file-editor-*
+          merge-multiple: true
+      - name: Create checksums
+        working-directory: release-files
+        run: |
+          sha256sum -- * > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: release-files/*
+          generate_release_notes: true
+          fail_on_unmatched_files: true
