@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; script-src 'self'">
+  <title>About MD File Editor</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; padding: 20px 22px 16px; font: 14px/1.4 "Segoe UI", system-ui, sans-serif; background: Canvas; color: CanvasText; }
+    .row { display: flex; gap: 18px; }
+    img { width: 64px; height: 64px; flex: none; margin-top: 2px; }
+    h1 { margin: 0; font-size: 20px; font-weight: 600; }
+    .muted { color: GrayText; }
+    p { margin: 10px 0 0; }
+    ul { list-style: none; margin: 14px 0 0; padding: 0; }
+    li { margin: 4px 0; }
+    a { color: LinkText; }
+    .actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 18px; }
+    button { padding: 4px 16px; font: inherit; }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <img src="build/icon.png" alt="MD File Editor icon">
+    <div>
+      <h1 id="product"></h1>
+      <div id="version" class="muted"></div>
+      <p id="description"></p>
+      <p id="copyright" class="muted"></p>
+      <ul id="links"></ul>
+    </div>
+  </div>
+  <div class="actions">
+    <button id="copy" type="button" title="Copy the version and system details, for example for a bug report">Copy details</button>
+    <button id="close" type="button" autofocus>Close</button>
+  </div>
+  <script src="about.js"></script>
+</body>
+</html>

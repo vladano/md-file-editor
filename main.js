@@ -1,9 +1,11 @@
-const { app, BrowserWindow, Menu, dialog, ipcMain, shell } = require('electron');
+const { app, BrowserWindow, Menu, dialog, ipcMain, shell, clipboard } = require('electron');
 const fs = require('fs');
 const path = require('path');
 const { MARKDOWN_EXTENSIONS, fileFromArgv: findFileArg, resolveRelative } = require('./src/file-utils');
+const { getAppInfo, detailsText, isAllowedLink } = require('./src/app-info');
 
 let win;
+let aboutWin = null;
 let watcher = null;
 let currentPath = null;
 
@@ -100,6 +102,35 @@ ipcMain.handle('confirm:discard', async () => {
 ipcMain.handle('shell:reveal', (_e, p) => p && shell.showItemInFolder(p));
 ipcMain.on('title:set', (_e, t) => win && win.setTitle(t));
 
+const appInfo = () => getAppInfo(require('./package.json'));
+
+ipcMain.handle('about:info', () => appInfo());
+ipcMain.handle('about:open-link', (_e, url) => (isAllowedLink(url) ? shell.openExternal(url) : undefined));
+ipcMain.handle('about:copy-details', () => clipboard.writeText(detailsText(appInfo())));
+ipcMain.on('about:close', () => { if (aboutWin) aboutWin.close(); });
+
+function showAbout() {
+  if (aboutWin) { aboutWin.focus(); return; }
+  aboutWin = new BrowserWindow({
+    parent: win, modal: !!win, width: 520, height: 400,
+    resizable: false, minimizable: false, maximizable: false, show: false,
+    title: 'About MD File Editor',
+    icon: path.join(__dirname, 'build', 'icon.png'),
+    webPreferences: {
+      preload: path.join(__dirname, 'about-preload.js'),
+      contextIsolation: true,
+      sandbox: true,
+      nodeIntegration: false
+    }
+  });
+  aboutWin.setMenuBarVisibility(false);
+  aboutWin.loadFile('about.html');
+  aboutWin.once('ready-to-show', () => aboutWin && aboutWin.show());
+  aboutWin.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
+  aboutWin.webContents.on('will-navigate', (e) => e.preventDefault());
+  aboutWin.on('closed', () => { aboutWin = null; });
+}
+
 function buildMenu() {
   const cmd = (c) => () => send('cmd', c);
   const template = [
@@ -131,6 +162,9 @@ function buildMenu() {
       { label: 'Reset Zoom', accelerator: 'CmdOrCtrl+0', click: cmd('zoom-reset') },
       { type: 'separator' },
       { role: 'toggleDevTools' }
+    ] },
+    { label: 'Help', submenu: [
+      { label: 'About MD File Editor', click: showAbout }
     ] }
   ];
   Menu.setApplicationMenu(Menu.buildFromTemplate(template));
