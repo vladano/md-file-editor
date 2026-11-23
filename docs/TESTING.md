@@ -37,4 +37,5 @@ Open `sample.md` in the app (from source or a built binary) and check:
 - After an edit the title shows `●`, and Ctrl+S saves and clears it.
 - File > Export as HTML and Export as PDF each create a file.
 - Editing `sample.md` in another editor reloads the preview automatically.
+- Help > About MD File Editor opens a modal window with the icon, version, description, copyright and five links. A link opens in the browser, "Copy details" puts the version and system details on the clipboard, and Esc or Close closes it. Check it in light and dark mode.
 - The window, taskbar and installer show the MD File Editor icon, not the default Electron icon.

@@ -57,7 +57,7 @@ Comparison based on public information about each app at the time of writing. Ch
 
 ## Features
 
-Preview / editor / split view, outline panel, zoom in/out, light/dark theme, find, GitHub-style tables, task lists, footnotes, emoji, KaTeX math, Mermaid diagrams, syntax highlighting, live reload on file change, drag & drop, export to HTML and PDF.
+Preview / editor / split view, outline panel, zoom in/out, light/dark theme, find, GitHub-style tables, task lists, footnotes, emoji, KaTeX math, Mermaid diagrams, syntax highlighting, live reload on file change, drag & drop, export to HTML and PDF, and a Help > About window with version details you can copy into a bug report.
 
 ## Download and install
 
