@@ -5,6 +5,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-11-23
+### Added
+- Help > About MD File Editor: shows the version, description, copyright and project links (source code, documentation, latest release, issues, license), with a "Copy details" button for bug reports.
+
 ## [1.0.3] - 2026-11-22
 ### Added
 - macOS `.dmg` and `.zip` builds (Intel and Apple Silicon) in the Build workflow. They are attached to releases together with the Windows and Linux binaries.
