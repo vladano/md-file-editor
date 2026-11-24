@@ -73,7 +73,17 @@ You can also [build the binaries yourself](docs/BUILDING.md).
 
 Each release includes a `SHA256SUMS.txt` file so you can verify your download.
 
-The builds are not code signed yet, so your OS may show a warning on first launch:
+### Verify your download
+
+Release files are signed with [Sigstore](https://www.sigstore.dev/) through [GitHub artifact attestations](https://docs.github.com/actions/concepts/security/artifact-attestations). This proves a file was built from this repository by its GitHub Actions workflow, and that it was not changed afterwards. Install the [GitHub CLI](https://cli.github.com/) and run:
+
+```bash
+gh attestation verify "MD.File.Editor.Setup.1.1.0.exe" --repo vladano/md-file-editor
+```
+
+Use the name of the file you downloaded. Releases before the first one with attestations do not have them. This is separate from OS code signing, so the warnings below can still appear.
+
+The builds are not code signed for Windows or macOS yet, so your OS may show a warning on first launch:
 
 - Windows: SmartScreen shows "Windows protected your PC". Click "More info" > "Run anyway".
 - macOS: Gatekeeper blocks the first launch. Right-click the app and choose Open, or run `xattr -cr "/Applications/MD File Editor.app"` after copying it to Applications.

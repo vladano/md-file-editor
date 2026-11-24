@@ -1,6 +1,7 @@
 # Builds Windows, Linux and macOS binaries on native runners.
 # Trigger manually (Actions > Build > Run workflow) or by pushing a tag like v1.0.0.
-# Pushing a v* tag also creates a GitHub Release with all binaries and a SHA256SUMS.txt.
+# Pushing a v* tag also creates a GitHub Release with all binaries and a SHA256SUMS.txt,
+# and signs the release files with Sigstore build provenance attestations.
 # macOS builds are unsigned unless signing secrets (CSC_LINK etc.) are configured.
 name: Build
 
@@ -54,6 +55,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write     # lets the job request a short-lived Sigstore signing certificate
+      attestations: write # lets the job store the signed build provenance
     steps:
       - uses: actions/checkout@v7
       - name: Check tag matches package.json version
@@ -73,6 +76,11 @@ jobs:
         run: |
           sha256sum -- * > SHA256SUMS.txt
           cat SHA256SUMS.txt
+      # Signs a build provenance attestation for every release file with a short-lived
+      # Sigstore certificate (keyless). Users check it with `gh attestation verify`.
+      - uses: actions/attest-build-provenance@v4
+        with:
+          subject-path: 'release-files/*'
       - uses: softprops/action-gh-release@v3
         with:
           files: release-files/*
